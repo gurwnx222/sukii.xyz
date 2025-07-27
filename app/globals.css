@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+:root {
+    --white: #ffffff;
+    --purple: #8500d1;
+    --border: .625rem;
+    --fill: #0f1221;
+    --font-inter: 'Inter', sans-serif;
+    --stroke: #1b1e29;
+    --gray: #c1c1c1;
+}
+
 body {
     @apply text-white;
     background: linear-gradient(180deg,
