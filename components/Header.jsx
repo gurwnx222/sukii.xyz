@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
@@ -21,14 +21,14 @@ export default function Header() {
   ];
 
   return (
-    <header className="text-white shadow-lg">
+    <header className="text-gray-800 shadow-lg bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
-                src={orbitalLogo}
+                src={orbitalLogo || "/placeholder.svg"}
                 alt="Orbital Logo"
                 className="h-12 w-auto"
                 priority
@@ -42,9 +42,10 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-300 hover:text-white px-3 py-2 text-lg font-medium transition-colors duration-400 hover:underline rounded-md"
+                className="text-gray-700 hover:text-[#8500d1] px-3 py-2 text-lg font-medium transition-colors duration-300 relative group"
               >
                 {item.name}
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#8500d1] transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </nav>
@@ -53,7 +54,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="text-gray-300 hover:text-white p-2 rounded-md transition-colors duration-200"
+              className="text-gray-700 hover:text-[#8500d1] p-2 rounded-md transition-colors duration-200"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
@@ -68,12 +69,12 @@ export default function Header() {
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-gray-700">
+            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-gray-200">
               {navigationItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200 hover:bg-gray-800 rounded-md"
+                  className="text-gray-700 hover:text-[#8500d1] block px-3 py-2 text-base font-medium transition-colors duration-200 hover:bg-gray-50 rounded-md"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
