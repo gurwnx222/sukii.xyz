@@ -2,6 +2,7 @@ import CourseFeaturesSection from "./components/CourseFeaturesSection";
 import CourseSection from "./components/CourseSection";
 import HeroSection from "./components/HeroSection";
 import Header from "@/components/Header";
+import FaqSection from "./components/FaqSection";
 export default function Home() {
   return (
     <>
@@ -9,6 +10,7 @@ export default function Home() {
       <HeroSection />
       <CourseSection />
       <CourseFeaturesSection />
+      <FaqSection />
     </>
   );
 }
