@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import heroSectionImage from "@/public/decoratives/planet-image-full.png";
 import decorConstellation from "@/public/decoratives/constellation-image-3.svg";
 import decorStar from "@/public/decoratives/decor-star.svg";
-
+import Button from "@/components/Button";
 export default function HeroSection() {
   return (
     <>
@@ -105,19 +105,21 @@ export default function HeroSection() {
             {/* Left Content */}
             <div className="pt-20 md:pt-24 lg:pt-0 text-center lg:text-left">
               {/* Headline */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6 md:mb-8">
+              <h1 className="text-4xl md:text-2xl lg:text-4xl xl:text-7xl font-bold text-white leading-tight mb-6 md:mb-8">
                 <span className="block">Pioneer your</span>
                 <span className="block">Future in</span>
                 <span className="block">Technology</span>
               </h1>
 
               {/* Subheadline */}
-              <p className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8 md:mb-12">
+              <p className="text-lg md:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8 md:mb-12">
                 Nuru Labs is dedicated to empowering individuals through
                 comprehensive online training, industry-recognized
                 certifications, and collaborative project hubs, paving the way
                 for innovation and success in the tech industry.
               </p>
+              {/* Call to Action Button */}
+              <Button name="Get Started" />
             </div>
 
             {/* Right Content - Hero Image */}
