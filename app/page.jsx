@@ -1,3 +1,4 @@
+import CourseFeaturesSection from "./components/CourseFeaturesSection";
 import CourseSection from "./components/CourseSection";
 import HeroSection from "./components/HeroSection";
 import Header from "@/components/Header";
@@ -7,6 +8,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <CourseSection />
+      <CourseFeaturesSection />
     </>
   );
 }
