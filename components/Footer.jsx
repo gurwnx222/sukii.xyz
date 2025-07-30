@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
 
           {/* Navigation Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-8 text-sm font-medium">
+          <nav className="flex flex-wrap items-center justify-center gap-8 text-lg font-medium">
             <Link
               href="/"
               className="hover:text-gray-300 transition-colors duration-200"
@@ -83,7 +83,7 @@ export default function Footer() {
               <Instagram className="w-5 h-5" />
             </Link>
             <Link
-              href="#"
+              href="https://www.tiktok.com/@nuru_labs"
               className="hover:text-gray-300 transition-colors duration-200"
               aria-label="TikTok"
             >
@@ -111,22 +111,22 @@ export default function Footer() {
 
         {/* Bottom section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400">
-          <span>© 2024 Orbital. All rights reserved.</span>
+          <span>© 2025 Orbital. All rights reserved.</span>
           <div className="flex items-center gap-4">
             <Link
-              href="/privacy-policy"
+              href="#"
               className="hover:text-white transition-colors duration-200 underline underline-offset-2"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/terms-of-service"
+              href="#"
               className="hover:text-white transition-colors duration-200 underline underline-offset-2"
             >
               Terms of Service
             </Link>
             <Link
-              href="/cookies-settings"
+              href="#"
               className="hover:text-white transition-colors duration-200 underline underline-offset-2"
             >
               Cookies Settings
