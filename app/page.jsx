@@ -4,7 +4,7 @@ import HeroSection from "./components/HeroSection";
 import Header from "@/components/Header";
 import FaqSection from "./components/FaqSection";
 import OurAdvantages from "./components/OurAdvantages";
-
+import Testimonials from "./components/Testimonials";
 export default function Home() {
   return (
     <>
@@ -14,6 +14,7 @@ export default function Home() {
       <CourseFeaturesSection />
       <FaqSection />
       <OurAdvantages />
+      <Testimonials />
     </>
   );
 }
