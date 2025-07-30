@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import FaqSection from "./components/FaqSection";
 import OurAdvantages from "./components/OurAdvantages";
 import Testimonials from "./components/Testimonials";
+import Footer from "@/components/Footer";
+import JoinNow from "./components/JoinNow";
 export default function Home() {
   return (
     <>
@@ -15,6 +17,8 @@ export default function Home() {
       <FaqSection />
       <OurAdvantages />
       <Testimonials />
+      <JoinNow />
+      <Footer />
     </>
   );
 }
