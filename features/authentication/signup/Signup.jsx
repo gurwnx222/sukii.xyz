@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { Eye, EyeOff, Mail, X } from "lucide-react";
 import RegisterImage from "@/public/register-image.svg";
 import Image from "next/image";
@@ -397,12 +398,12 @@ export default function Signup() {
                 {/* Sign in link */}
                 <div className="text-center mt-6 text-sm text-gray-300">
                   Already have an account?{" "}
-                  <a
-                    href="/signin"
+                  <Link
+                    href="/login"
                     className="text-white underline hover:text-purple-300 transition-colors"
                   >
                     Sign in
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
