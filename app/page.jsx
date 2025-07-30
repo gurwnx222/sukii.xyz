@@ -3,6 +3,8 @@ import CourseSection from "./components/CourseSection";
 import HeroSection from "./components/HeroSection";
 import Header from "@/components/Header";
 import FaqSection from "./components/FaqSection";
+import OurAdvantages from "./components/OurAdvantages";
+
 export default function Home() {
   return (
     <>
@@ -11,6 +13,7 @@ export default function Home() {
       <CourseSection />
       <CourseFeaturesSection />
       <FaqSection />
+      <OurAdvantages />
     </>
   );
 }
