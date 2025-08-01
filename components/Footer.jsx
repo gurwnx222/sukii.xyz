@@ -111,7 +111,7 @@ export default function Footer() {
 
         {/* Bottom section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400">
-          <span>© 2025 Orbital. All rights reserved.</span>
+          <span>© 2025 Nuru Labs. All rights reserved.</span>
           <div className="flex items-center gap-4">
             <Link
               href="#"
