@@ -1,7 +1,7 @@
 import React from "react";
 import CASI from "@/features/courses/pages/CASI";
 import SideBar from "@/features/courses/components/SideBar";
-export default function CASI() {
+export default function CASIPage() {
   return (
     <div className="flex">
       <SideBar />
