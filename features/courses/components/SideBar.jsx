@@ -11,7 +11,7 @@ import Image from "next/image";
 
 export default function SideBar() {
   return (
-    <div className="w-80 h-screen bg-[#0f1221] flex flex-col p-6">
+    <div className="fixed left-0 top-0 w-80 h-screen bg-[#0f1221] flex flex-col p-6 z-50">
       {/* Logo Section */}
       <div className="flex justify-center mb-12">
         <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">

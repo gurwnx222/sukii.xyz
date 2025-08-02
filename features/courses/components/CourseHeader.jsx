@@ -8,19 +8,19 @@ export default function CourseHeader({
   courseTags,
 }) {
   return (
-    <div className="w-full">
+    <div className="flex flex-col items-center justify-center">
       {/* Course Name Section */}
-      <div className="bg-slate-900 border border-slate-800 rounded-lg p-4 m-8">
+      <div className="w-3xl bg-slate-900 border border-slate-800 rounded-lg p-4 mt-8 ">
         <h1 className="text-xl md:text-2xl lg:text-3xl font-normal text-white leading-tight">
           {courseName}
         </h1>
       </div>
 
       {/* Description Section */}
-      <div className="bg-slate-900 border border-slate-800 rounded-lg p-4 m-8">
+      <div className="w-3xl bg-slate-900 border border-slate-800 rounded-lg p-4 mt-4 mb-8">
         <div className="space-y-6">
           <h2 className="text-lg md:text-1xl lg:text-2xl font-normal text-white mb-8">
-            Description
+            Course Overview
           </h2>
 
           <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-4xl mb-8">
