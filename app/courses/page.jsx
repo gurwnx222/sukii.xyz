@@ -1,4 +1,4 @@
-import SideBar from "@/features/courses/sidebar/SideBar";
+import SideBar from "@/features/courses/components/SideBar";
 import { Check } from "lucide-react";
 import Image from "next/image";
 import RocketIcon from "@/public/courses-feature-images/rocket 2.png";
