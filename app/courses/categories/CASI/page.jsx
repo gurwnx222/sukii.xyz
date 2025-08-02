@@ -1,11 +1,11 @@
 import React from "react";
-import BASI from "@/features/courses/pages/BASI";
+import CASI from "@/features/courses/pages/CASI";
 import SideBar from "@/features/courses/components/SideBar";
-export default function BASI() {
+export default function CASI() {
   return (
     <div className="flex">
       <SideBar />
-      <BASI />
+      <CASI />
     </div>
   );
 }

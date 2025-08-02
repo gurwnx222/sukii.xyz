@@ -1,11 +1,11 @@
 import React from "react";
-import BASI from "@/features/courses/pages/BASI";
+import CCSA from "@/features/courses/pages/CCSA";
 import SideBar from "@/features/courses/components/SideBar";
-export default function BASI() {
+export default function CCSA() {
   return (
     <div className="flex">
       <SideBar />
-      <BASI />
+      <CCSA />
     </div>
   );
 }
