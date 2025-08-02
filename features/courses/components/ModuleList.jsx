@@ -1,3 +1,4 @@
+"use client";
 import ModuleCard from "./ModuleCard";
 
 const ModuleList = ({ modules = [] }) => {
@@ -5,9 +6,9 @@ const ModuleList = ({ modules = [] }) => {
     <div className="p-4 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
         <div className="space-y-2">
-          {modules.map((module, index) => (
+          {modules.map((module) => (
             <ModuleCard
-              key={index}
+              key={`module-${module.moduleNumber}-${module.moduleTitle}`} // Use stable unique key
               moduleNumber={module.moduleNumber}
               moduleTitle={module.moduleTitle}
               lectureCount={module.lectureCount}

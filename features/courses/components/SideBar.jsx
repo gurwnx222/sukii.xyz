@@ -1,5 +1,4 @@
 import {
-  Home,
   ChevronRight,
   LogOut,
   Building2,

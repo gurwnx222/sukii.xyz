@@ -8,7 +8,7 @@ export default function CourseHeader({
   courseTags,
 }) {
   return (
-    <div className="w-full" style={{ backgroundColor: "#0f1221" }}>
+    <div className="w-full">
       {/* Course Name Section */}
       <div className="bg-slate-900 border border-slate-800 rounded-lg p-4 m-8">
         <h1 className="text-xl md:text-2xl lg:text-3xl font-normal text-white leading-tight">
