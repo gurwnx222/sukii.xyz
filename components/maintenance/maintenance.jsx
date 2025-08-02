@@ -11,7 +11,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import Header from "@/components/Header";
-export default function UnderMaintenance() {
+export default function UnderMaintenance({ page = "" }) {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -83,7 +83,7 @@ export default function UnderMaintenance() {
             </p>
 
             <p className="text-gray-400 text-lg mb-8">
-              The About Us page is currently under maintenance. We apologize for
+              The {page} page is currently under maintenance. We apologize for
               the inconvenience and appreciate your patience.
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function UnderMaintenance() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
                   <div>
                     <div className="text-2xl font-bold text-purple-400 mb-1">
-                      ~ 2 Days
+                      ~ 6 Days
                     </div>
                     <div className="text-gray-300 text-sm">Estimated Time</div>
                   </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import Maintenance from "@/features/maintenance/maintenance";
+import Maintenance from "@/components/maintenance/maintenance";
 export default function Events() {
   return (
     <div>
-      <Maintenance />
+      <Maintenance page="Events" />
     </div>
   );
 }
