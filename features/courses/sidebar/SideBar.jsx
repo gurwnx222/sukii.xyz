@@ -26,11 +26,6 @@ export default function SideBar() {
 
       {/* Main Navigation */}
       <div className="flex-1 space-y-4">
-        {/* Home - Active/Highlighted */}
-        <div className="bg-purple-600 hover:bg-purple-700 transition-colors duration-200 rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
-          <Home className="w-5 h-5 text-white" />
-          <span className="text-white font-medium text-lg">Home</span>
-        </div>
         {/* CCSA */}
         <div className="hover:bg-slate-800 transition-colors duration-200 rounded-lg p-4 flex items-center justify-between cursor-pointer group">
           <div className="flex items-center space-x-3">
