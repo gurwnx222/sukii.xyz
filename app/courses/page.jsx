@@ -1,9 +1,11 @@
+"use client";
 import SideBar from "@/features/courses/components/SideBar";
 import { Check } from "lucide-react";
 import Image from "next/image";
 import RocketIcon from "@/public/courses-feature-images/rocket 2.png";
 import Button from "@/components/Button";
 import { ProtectedRoute } from "@/features/authentication";
+import { useRouter } from "next/navigation";
 
 const coursesData = [
   {
@@ -12,6 +14,7 @@ const coursesData = [
     title: "CASI - Certified Advanced Security Implementor",
     modules: "15 Modules",
     features: ["Strengthen network security.", "Mitigate security risks."],
+    navLink: "/courses/categories/CASI",
   },
   {
     id: 2,
@@ -19,6 +22,7 @@ const coursesData = [
     title: "BASI - Blockchain Solutions Architect",
     modules: "5 Modules",
     features: ["Design secure networks.", "Build decentralized systems."],
+    navLink: "/courses/categories/BASI",
   },
   {
     id: 3,
@@ -26,6 +30,7 @@ const coursesData = [
     title: "CCSA - Certified Computer Systems Analyst",
     modules: "5 Modules",
     features: ["Improve business efficiency", "Optimize IT infrastructure"],
+    navLink: "/courses/categories/CCSA",
   },
   {
     id: 4,
@@ -36,10 +41,16 @@ const coursesData = [
       "Ensure successful project deployments.",
       "Manage project lifecycles.",
     ],
+    navLink: "/courses/categories/PASI",
   },
 ];
 
 function CourseCard({ course }) {
+  const router = useRouter();
+  const handleNavigation = () => {
+    router.push(course.navLink);
+  };
+
   return (
     <div className="bg-gray-800 rounded-2xl p-6 flex flex-col h-full">
       {/* Badge */}
@@ -79,7 +90,11 @@ function CourseCard({ course }) {
       </div>
 
       {/* Start Course Button */}
-      <Button name="Start Course" className="flex flex-start w-2xs" />
+      <Button
+        name="Start Course"
+        className="flex flex-start w-2xs"
+        onClick={handleNavigation}
+      />
     </div>
   );
 }
