@@ -90,41 +90,102 @@ export default function Testimonials() {
         <Image
           src={decorStar || "/placeholder.svg"}
           alt=""
-          className="absolute top-20 left-20 w-4 h-4 opacity-60"
+          className="absolute top-20 left-20 w-3 h-3 sm:w-4 sm:h-4 opacity-60"
         />
         <Image
           src={decorStar || "/placeholder.svg"}
           alt=""
-          className="absolute top-40 right-32 w-3 h-3 opacity-40"
+          className="absolute top-40 right-32 w-2 h-2 sm:w-3 sm:h-3 opacity-40"
         />
         <Image
           src={decorStar || "/placeholder.svg"}
           alt=""
-          className="absolute bottom-32 left-16 w-5 h-5 opacity-50"
+          className="absolute bottom-32 left-16 w-4 h-4 sm:w-5 sm:h-5 opacity-50"
         />
         <Image
           src={decorStar || "/placeholder.svg"}
           alt=""
-          className="absolute top-60 left-1/3 w-2 h-2 opacity-70"
+          className="absolute top-60 left-1/3 w-1 h-1 sm:w-2 sm:h-2 opacity-70"
         />
         <Image
           src={decorStar || "/placeholder.svg"}
           alt=""
-          className="absolute bottom-20 right-20 w-4 h-4 opacity-60"
+          className="absolute bottom-20 right-20 w-3 h-3 sm:w-4 sm:h-4 opacity-60"
         />
         <Image
           src={decorStar || "/placeholder.svg"}
           alt=""
-          className="absolute top-32 right-1/4 w-3 h-3 opacity-50"
+          className="absolute top-32 right-1/4 w-2 h-2 sm:w-3 sm:h-3 opacity-50"
         />
 
         {/* Additional decorative elements */}
-        <div className="absolute top-16 left-1/4 w-2 h-2 bg-purple-400 rounded-full opacity-60 animate-pulse"></div>
-        <div className="absolute bottom-40 right-1/3 w-3 h-3 bg-blue-400 rounded-full opacity-40 animate-pulse delay-1000"></div>
+        <div className="absolute top-16 left-1/4 w-1 h-1 sm:w-2 sm:h-2 bg-purple-400 rounded-full opacity-60 animate-pulse"></div>
+        <div className="absolute bottom-40 right-1/3 w-2 h-2 sm:w-3 sm:h-3 bg-blue-400 rounded-full opacity-40 animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-12 w-1 h-1 bg-white rounded-full opacity-80"></div>
       </div>
 
-      <div className="relative z-10 flex h-screen">
+      {/* Mobile Layout */}
+      <div className="relative z-10 lg:hidden min-h-screen py-12 px-4">
+        {/* Title Section - Mobile */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
+            Customer
+            <br />
+            Testimonials
+          </h2>
+        </div>
+
+        {/* Testimonials Grid - Mobile */}
+        <div className="space-y-6">
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50"
+            >
+              {/* Star Rating */}
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg
+                    key={i}
+                    className="w-5 h-5 fill-yellow-400"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+
+              {/* Testimonial Text */}
+              <blockquote className="text-white text-sm leading-relaxed mb-6">
+                "{testimonial.text}"
+              </blockquote>
+
+              {/* Author Info */}
+              <div className="flex items-center gap-3">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-600">
+                  <Image
+                    src={testimonial.image || "/placeholder.svg"}
+                    alt={testimonial.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <div className="text-white font-semibold text-sm">
+                    {testimonial.name}
+                  </div>
+                  <div className="text-slate-400 text-xs">
+                    {testimonial.position}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop Layout */}
+      <div className="relative z-10 hidden lg:flex h-screen">
         {/* Left Side - Title */}
         <div className="flex-1 flex items-center justify-center px-8 lg:px-16">
           <div className="max-w-md">
