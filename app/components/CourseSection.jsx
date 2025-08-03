@@ -1,6 +1,7 @@
+"use client";
 import Image from "next/image";
 import RocketPng from "@/public/courses-feature-images/rocket 2.png";
-
+import { useRouter } from "next/navigation";
 const courses = [
   {
     id: 1,
@@ -27,8 +28,11 @@ const courses = [
       "Is course provides intermediate-level training in project coordination. It covers key aspects such as effective project management, coordination techniques, and best practices to ensure successful project outcomes in the tech industry.",
   },
 ];
-
 export default function CourseSection() {
+  const router = useRouter();
+  const handleSubmit = () => {
+    router.push("/register");
+  };
   return (
     <div className="min-h-screen bg-slate-900 py-16 px-4">
       <div className="max-w-7xl mx-auto">
@@ -89,7 +93,10 @@ export default function CourseSection() {
 
             {/* Central Get Started Button */}
             <div className="flex justify-center">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center gap-3 hover:shadow-lg hover:shadow-purple-500/30 hover:transform hover:scale-105">
+              <button
+                onClick={handleSubmit}
+                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center gap-3 hover:shadow-lg hover:shadow-purple-500/30 hover:transform hover:scale-105"
+              >
                 Get started
                 <svg
                   className="w-5 h-5 transition-transform hover:translate-x-1"

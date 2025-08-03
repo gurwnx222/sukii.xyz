@@ -1,6 +1,7 @@
 "use client";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import Button from "@/components/Button";
+import { useRouter } from "next/navigation";
 const MainCard = ({
   tagline = "Unlock your potential with cutting-edge IT education and shape the digital world of tomorrow.",
   title = "Orbital: Take the First Step into IT",
@@ -43,6 +44,10 @@ export default function JoinNow({
   beamSize = 100,
   beamDelay = 0,
 }) {
+  const router = useRouter();
+  const handleJoinNow = () => {
+    router.push("/register");
+  };
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <div className="relative w-full max-w-6xl">
@@ -53,7 +58,7 @@ export default function JoinNow({
           textColor={textColor}
           taglineColor={taglineColor}
         >
-          <Button name="Join Now" />
+          <Button name="Join Now" onClick={handleJoinNow} />
         </MainCard>
         <BorderBeam
           colorFrom={beamColorFrom}
