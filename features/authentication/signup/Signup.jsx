@@ -1,13 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Changed from "next/router"
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff, Mail, X } from "lucide-react";
 import RegisterImage from "@/public/register-image.svg";
 import Image from "next/image";
 import decorStar from "@/public/decoratives/decor-star.svg";
 import Header from "@/components/Header";
-import { useAuth } from "@/features/authentication"; // Import your auth hook
+import { useAuth } from "@/features/authentication";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
