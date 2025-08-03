@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 import Image from "next/image";
 import RocketIcon from "@/public/courses-feature-images/rocket 2.png";
 import Button from "@/components/Button";
+import { ProtectedRoute } from "@/features/authentication";
 
 const coursesData = [
   {
@@ -85,19 +86,32 @@ function CourseCard({ course }) {
 
 function Courses() {
   return (
-    <div className="flex min-h-screen bg-gray-900">
-      <SideBar />
-      <div className="flex-1 p-6">
-        <div className="max-w-7xl mx-auto">
-          {/* Courses Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {coursesData.map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))}
+    <ProtectedRoute>
+      <div className="flex min-h-screen bg-gray-900">
+        <SideBar />
+        {/* Main content area with proper spacing and alignment */}
+        <main className="flex-1 ml-0 lg:ml-4 xl:ml-8">
+          <div className="h-full px-6 py-8 lg:px-8 xl:px-12">
+            {/* Header section (optional - add if needed) */}
+            <div className="flex justify-center items-center flex-col mb-8">
+              <h1 className="text-4xl font-bold text-white mb-2">Courses</h1>
+              <p className="text-gray-400">
+                Choose from our certification programs
+              </p>
+            </div>
+
+            {/* Courses Grid - properly aligned to the right */}
+            <div className="w-4xl ml-80">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 xl:gap-4 max-w-none">
+                {coursesData.map((course) => (
+                  <CourseCard key={course.id} course={course} />
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </main>
       </div>
-    </div>
+    </ProtectedRoute>
   );
 }
 

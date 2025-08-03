@@ -6,6 +6,7 @@ import heroSectionImage from "@/public/decoratives/planet-image-full.png";
 import decorConstellation from "@/public/decoratives/constellation-image-3.svg";
 import decorStar from "@/public/decoratives/decor-star.svg";
 import Button from "@/components/Button";
+import Link from "next/link";
 export default function HeroSection() {
   return (
     <>
@@ -119,7 +120,7 @@ export default function HeroSection() {
                 for innovation and success in the tech industry.
               </p>
               {/* Call to Action Button */}
-              <Button name="Get Started" />
+              <Button name="Get Started"></Button>
             </div>
 
             {/* Right Content - Hero Image */}
