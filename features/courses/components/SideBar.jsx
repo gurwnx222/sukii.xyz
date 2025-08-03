@@ -56,12 +56,12 @@ export default function SideBar() {
           );
         })}
 
-        {/* Donate Button */}
+        {/* Donate Button 
         <div className="mt-8">
           <button className="w-full bg-purple-600 hover:bg-purple-700 transition-colors duration-200 rounded-lg p-4 text-white font-medium text-lg">
             Donate
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Bottom Navigation */}

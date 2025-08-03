@@ -29,7 +29,7 @@ const ModuleCard = ({
   };
 
   return (
-    <div className="w-full bg-slate-800 border border-slate-600 rounded-lg mb-3 overflow-hidden transition-all duration-300 ease-in-out">
+    <div className="w-full bg-slate-800 border border-slate-600 rounded-lg overflow-hidden transition-all duration-300 ease-in-out">
       {/* Header - Clickable */}
       <div
         className={`p-4 transition-colors duration-200 ${
