@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"; // Changed from "next/router"
 import { Eye, EyeOff, Mail, X } from "lucide-react";
 import RegisterImage from "@/public/register-image.svg";
 import Image from "next/image";

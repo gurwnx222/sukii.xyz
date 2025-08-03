@@ -5,7 +5,7 @@ import { useAuth } from "../hooks/useAuth";
 
 const ProtectedRoute = ({
   children,
-  redirectTo = "/login",
+  redirectTo = "/register",
   fallback = null,
 }) => {
   const { user, loading } = useAuth();
