@@ -9,7 +9,7 @@ export default function CASI() {
       moduleNumber: 1,
       moduleTitle: "Build keylogger",
       lectureCount: 1,
-      duration: "1:12 min",
+      duration: "45:12 min",
       videoTitle: "Unedited keylogger video",
       description: "Learn about keylogger coding.",
       iframeLink:
@@ -21,7 +21,7 @@ export default function CASI() {
       moduleNumber: 2,
       moduleTitle: "Introduction to Create a Blockchain 01 Made with Clipchamp",
       lectureCount: 1,
-      duration: "1:12 min",
+      duration: "45:09 min",
       videoTitle: "Edited Create a Blockchain 01 Made with Clipchamp",
       description: "Learn to create a Blockchain 01 Made with Clipchamp",
       iframeLink:
