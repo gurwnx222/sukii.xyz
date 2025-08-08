@@ -4,17 +4,64 @@ import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
 
 export default function BASI() {
-  const moduleData = [
+  const firstModule = [
     {
       moduleNumber: 1,
-      moduleTitle: "Introduction to React",
-      lectureCount: 5,
-      duration: "45 min",
-      videoTitle: "Getting Started with React Components",
-      description:
-        "Learn the fundamentals of React components and how to build your first interactive application.",
+      moduleTitle: "Introduction to Blockchain Technology",
+      lectureCount: 1,
+      duration: "4:12 min",
+      videoTitle: "Getting Started with Blockchain Technology",
+      description: "Learn the fundamentals of Blockchain Technology.",
       iframeLink:
-        "https://www.youtube.com/embed/nb_fFj_0rq8?si=8RN11PeoXzCTURUK",
+        "https://www.youtube.com/embed/kuOT23_xIek?si=tnkNRyA2cGZIeteu",
+    },
+  ];
+  const secondModule = [
+    {
+      moduleNumber: 2,
+      moduleTitle: "Introduction to security and wallet drains",
+      lectureCount: 1,
+      duration: "1:11 min",
+      videoTitle: "Security and wallet drains",
+      description: "Learn the fundamentals of security and wallet drains.",
+      iframeLink:
+        "https://www.youtube.com/embed/ulQNH-WeWzc?si=CSyYBm800mhZyAG1",
+    },
+  ];
+  const thirdModule = [
+    {
+      moduleNumber: 3,
+      moduleTitle: "Introduction to Communication Strategy",
+      lectureCount: 1,
+      duration: "2:23 min",
+      videoTitle: "Communication Strategy",
+      description: "Learn the fundamentals of Communication Strategy.",
+      iframeLink:
+        "https://www.youtube.com/embed/cwDp6mX3xE8?si=DhHWRRWy_aqW-nFx",
+    },
+  ];
+  const forthModule = [
+    {
+      moduleNumber: 4,
+      moduleTitle: "Introduction to Service Strategy",
+      lectureCount: 1,
+      duration: "2:31 min",
+      videoTitle: "Getting Started with Service Strategy",
+      description: "Learn the fundamentals of Service Strategy.",
+      iframeLink:
+        "https://www.youtube.com/embed/4S7AUItbPhA?si=kyIqt2fa5mcvWr9j",
+    },
+  ];
+  const fifthModule = [
+    {
+      moduleNumber: 5,
+      moduleTitle: "Introduction to Blockchain Technology",
+      lectureCount: 1,
+      duration: "4:12 min",
+      videoTitle: "Getting Started with Blockchain Technology",
+      description: "Learn the fundamentals of Blockchain Technology.",
+      iframeLink:
+        "https://www.youtube.com/embed/kuOT23_xIek?si=tnkNRyA2cGZIeteu",
     },
   ];
 
@@ -22,11 +69,20 @@ export default function BASI() {
     <div className="min-h-screen w-full bg-slate-900 overflow-y-auto">
       <div className="w-full h-full flex flex-col">
         <CourseHeader
-          courseName="BASI"
-          courseDescription="Learn the fundamentals of BASI."
-          courseTags={["BASI", "Certification", "Cloud"]}
+          courseName="BASI - Blockchain Solutions Architect"
+          courseDescription="The Blockchain Analytics and Solutions Architecture (BASI) course provides a comprehensive understanding of blockchain technology, data analytics, and system architecture. It covers key concepts such as decentralized applications, smart contracts, security frameworks, and blockchain-based solutions. This vendor-neutral course is designed to prepare you for the BASI certification exam."
+          courseTags={[
+            "Blockchain Analyst",
+            "Application Engineer",
+            "Blockchain Engineer",
+            "Blockchain Developer",
+          ]}
         />
-        <ModuleList modules={moduleData} />
+        <ModuleList modules={firstModule} />
+        <ModuleList modules={secondModule} />
+        <ModuleList modules={thirdModule} />
+        <ModuleList modules={forthModule} />
+        <ModuleList modules={fifthModule} />
       </div>
     </div>
   );

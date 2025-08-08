@@ -22,9 +22,15 @@ export default function CASI() {
     <div className="min-h-screen w-full bg-slate-900 overflow-y-auto">
       <div className="w-full h-full flex flex-col">
         <CourseHeader
-          courseName="CASI"
-          courseDescription="Learn the fundamentals of CASI."
-          courseTags={["CASI", "Certification", "Cloud"]}
+          courseName="CASI - Certified Advanced Security Implementor"
+          courseDescription="The Certified Advanced Security Implementor (CASI) course provides in-depth training on advanced security concepts, risk management, and secure system implementation. It covers critical topics such as threat mitigation, encryption, compliance, and secure network architecture. This vendor-neutral course is designed to prepare you for the CASI certification exam."
+          courseTags={[
+            "Security Admin",
+            "Security Architect",
+            "Security Engineer",
+            "Technical Analyst",
+            "Security Engineer",
+          ]}
         />
         <ModuleList modules={moduleData} />
       </div>

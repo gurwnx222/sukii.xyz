@@ -7,12 +7,11 @@ export default function PASI() {
   const moduleData = [
     {
       moduleNumber: 1,
-      moduleTitle: "Introduction to React",
-      lectureCount: 5,
+      moduleTitle: "Introduction to Security in blockchain",
+      lectureCount: 1,
       duration: "45 min",
-      videoTitle: "Getting Started with React Components",
-      description:
-        "Learn the fundamentals of React components and how to build your first interactive application.",
+      videoTitle: "Getting Started with Security in blockchain.",
+      description: "Learn the fundamentals of Security in blockchain.",
       iframeLink:
         "https://www.youtube.com/embed/nb_fFj_0rq8?si=8RN11PeoXzCTURUK",
     },
@@ -22,9 +21,9 @@ export default function PASI() {
     <div className="min-h-screen w-full bg-slate-900 overflow-y-auto">
       <div className="w-full h-full flex flex-col">
         <CourseHeader
-          courseName="PASI"
-          courseDescription="Learn the fundamentals of PASI."
-          courseTags={["PASI", "Certification", "Cloud"]}
+          courseName="PASI - Project Application & Solution Integration"
+          courseDescription="The Project Analytics Specialist and Integration (PASI) course provides essential skills in project analysis, data-driven decision-making, and system integration. It covers key concepts in project management, performance metrics, and analytical tools to optimize workflows. This vendor-neutral course is designed to prepare you for the PASI certification exam."
+          courseTags={["Team Lead", "Project Coordinator"]}
         />
         <ModuleList modules={moduleData} />
       </div>
