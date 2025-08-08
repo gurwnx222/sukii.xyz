@@ -25,7 +25,7 @@ export default function CASI() {
       videoTitle: "Edited Create a Blockchain 01 Made with Clipchamp",
       description: "Learn to create a Blockchain 01 Made with Clipchamp",
       iframeLink:
-        "https://www.youtube.com/embed/xTJWH8Ayrak?si=VG6DlusoxrQhKS4S",
+        "https://www.youtube.com/embed/UGdbC93w7r0?si=ELmb7xK7qWoky0st",
     },
   ];
 
