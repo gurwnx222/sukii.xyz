@@ -4,17 +4,28 @@ import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
 
 export default function CASI() {
-  const moduleData = [
+  const firstModule = [
     {
       moduleNumber: 1,
-      moduleTitle: "Introduction to React",
-      lectureCount: 5,
-      duration: "45 min",
-      videoTitle: "Getting Started with React Components",
-      description:
-        "Learn the fundamentals of React components and how to build your first interactive application.",
+      moduleTitle: "Build keylogger",
+      lectureCount: 1,
+      duration: "1:12 min",
+      videoTitle: "Unedited keylogger video",
+      description: "Learn about keylogger coding.",
       iframeLink:
-        "https://www.youtube.com/embed/nb_fFj_0rq8?si=8RN11PeoXzCTURUK",
+        "https://www.youtube.com/embed/Y4lffXLnb0Q?si=HH8HwF2Ua77PP24v",
+    },
+  ];
+  const secondModule = [
+    {
+      moduleNumber: 2,
+      moduleTitle: "Introduction to Create a Blockchain 01 Made with Clipchamp",
+      lectureCount: 1,
+      duration: "1:12 min",
+      videoTitle: "Edited Create a Blockchain 01 Made with Clipchamp",
+      description: "Learn to create a Blockchain 01 Made with Clipchamp",
+      iframeLink:
+        "https://www.youtube.com/embed/xTJWH8Ayrak?si=VG6DlusoxrQhKS4S",
     },
   ];
 
@@ -32,7 +43,8 @@ export default function CASI() {
             "Security Engineer",
           ]}
         />
-        <ModuleList modules={moduleData} />
+        <ModuleList modules={firstModule} />
+        <ModuleList modules={secondModule} />
       </div>
     </div>
   );

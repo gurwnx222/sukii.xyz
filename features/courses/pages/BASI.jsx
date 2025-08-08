@@ -13,7 +13,7 @@ export default function BASI() {
       videoTitle: "Getting Started with Blockchain Technology",
       description: "Learn the fundamentals of Blockchain Technology.",
       iframeLink:
-        "https://www.youtube.com/embed/kuOT23_xIek?si=tnkNRyA2cGZIeteu",
+        "https://www.youtube.com/embed/7w-P8Q7L56Q?si=j0-6YPi2TyQfp24x",
     },
   ];
   const secondModule = [
@@ -25,19 +25,19 @@ export default function BASI() {
       videoTitle: "Security and wallet drains",
       description: "Learn the fundamentals of security and wallet drains.",
       iframeLink:
-        "https://www.youtube.com/embed/ulQNH-WeWzc?si=CSyYBm800mhZyAG1",
+        "https://www.youtube.com/embed/kuOT23_xIek?si=tnkNRyA2cGZIeteu",
     },
   ];
   const thirdModule = [
     {
       moduleNumber: 3,
-      moduleTitle: "Introduction to Communication Strategy",
+      moduleTitle: "Introduction to DEFI and Core Concepts",
       lectureCount: 1,
       duration: "2:23 min",
       videoTitle: "Communication Strategy",
-      description: "Learn the fundamentals of Communication Strategy.",
+      description: "Learn the fundamentals of DEFI and Core Concepts.",
       iframeLink:
-        "https://www.youtube.com/embed/cwDp6mX3xE8?si=DhHWRRWy_aqW-nFx",
+        "https://www.youtube.com/embed/ncimQe8Plkk?si=9gZ9HjL6pxnaDczA",
     },
   ];
   const forthModule = [
@@ -61,7 +61,7 @@ export default function BASI() {
       videoTitle: "Getting Started with Blockchain Technology",
       description: "Learn the fundamentals of Blockchain Technology.",
       iframeLink:
-        "https://www.youtube.com/embed/kuOT23_xIek?si=tnkNRyA2cGZIeteu",
+        "https://www.youtube.com/embed/ulQNH-WeWzc?si=CSyYBm800mhZyAG1",
     },
   ];
 

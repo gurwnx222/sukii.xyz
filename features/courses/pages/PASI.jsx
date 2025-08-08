@@ -4,16 +4,76 @@ import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
 
 export default function PASI() {
-  const moduleData = [
+  const firstModule = [
     {
       moduleNumber: 1,
-      moduleTitle: "Introduction to Security in blockchain",
+      moduleTitle: "Introduction to POS VS POW",
       lectureCount: 1,
-      duration: "45 min",
-      videoTitle: "Getting Started with Security in blockchain.",
-      description: "Learn the fundamentals of Security in blockchain.",
+      duration: "2:17 min",
+      videoTitle: "Getting Started with POS VS POW.",
+      description: "Learn the fundamentals of POS VS POW.",
       iframeLink:
-        "https://www.youtube.com/embed/nb_fFj_0rq8?si=8RN11PeoXzCTURUK",
+        "https://www.youtube.com/embed/QvDw5znReAg?si=RMTmgn0XDWKk8p64",
+    },
+  ];
+  const secondModule = [
+    {
+      moduleNumber: 2,
+      moduleTitle: "Introduction to Rust and Solidity",
+      lectureCount: 1,
+      duration: "1:12 min",
+      videoTitle: "Getting Started with Rust and Solidity.",
+      description: "Learn the fundamentals of Rust and Solidity.",
+      iframeLink:
+        "https://www.youtube.com/embed/73KiSPcw6io?si=kCt2h8G_ixQQj5D-",
+    },
+  ];
+  const thirdModule = [
+    {
+      moduleNumber: 3,
+      moduleTitle: "Introduction to Communication Strategy",
+      lectureCount: 1,
+      duration: "1:12 min",
+      videoTitle: "Getting Started with Communication Strategy.",
+      description: "Learn the fundamentals of Communication Strategy.",
+      iframeLink:
+        "https://www.youtube.com/embed/cwDp6mX3xE8?si=o3mIT6M_1tXXPn5f",
+    },
+  ];
+  const forthModule = [
+    {
+      moduleNumber: 4,
+      moduleTitle: "Knowledge Article Updates",
+      lectureCount: 1,
+      duration: "2:10 min",
+      videoTitle: "Getting Started with Knowledge Article Updates.",
+      description: "Knowledge Article Updates.",
+      iframeLink:
+        "https://www.youtube.com/embed/ZL35WW8VGUk?si=nR-PEbCd29OllkWt",
+    },
+  ];
+  const fifthModule = [
+    {
+      moduleNumber: 5,
+      moduleTitle: "Introduction to Security in blockchain explained",
+      lectureCount: 1,
+      duration: "1:12 min",
+      videoTitle: "Getting Started with Security in blockchain explained.",
+      description: "Learn the fundamentals Security in blockchain explained.",
+      iframeLink:
+        "https://www.youtube.com/embed/xTJWH8Ayrak?si=xV1XpXGgbnWqvYSz",
+    },
+  ];
+  const sixthModule = [
+    {
+      moduleNumber: 6,
+      moduleTitle: "Introduction to Designing Secure Architectures",
+      lectureCount: 1,
+      duration: "1:39 min",
+      videoTitle: "Getting Started with Designing Secure Architectures.",
+      description: "Learn the fundamentals Designing Secure Architectures.",
+      iframeLink:
+        "https://www.youtube.com/embed/aZ3dDZ8hh1M?si=LXLJt0q0EtwvN0sB",
     },
   ];
 
@@ -25,7 +85,12 @@ export default function PASI() {
           courseDescription="The Project Analytics Specialist and Integration (PASI) course provides essential skills in project analysis, data-driven decision-making, and system integration. It covers key concepts in project management, performance metrics, and analytical tools to optimize workflows. This vendor-neutral course is designed to prepare you for the PASI certification exam."
           courseTags={["Team Lead", "Project Coordinator"]}
         />
-        <ModuleList modules={moduleData} />
+        <ModuleList modules={firstModule} />
+        <ModuleList modules={secondModule} />
+        <ModuleList modules={thirdModule} />
+        <ModuleList modules={forthModule} />
+        <ModuleList modules={fifthModule} />
+        <ModuleList modules={sixthModule} />
       </div>
     </div>
   );
