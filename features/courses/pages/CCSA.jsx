@@ -68,6 +68,54 @@ export default function CCSA() {
         "https://www.youtube.com/embed/1X8xmAjhuXw?si=MzgJfo5MkBRD9v3U",
     },
   ];
+  const sixthModule = [
+    {
+      moduleNumber: 6,
+      moduleTitle: "Transmition Control Protocol (TCP) and IP",
+      lectureCount: 1,
+      duration: "1:38 min",
+      videoTitle: "TCP IP Model and its layers",
+      description: "Learn about vLAN and how it works?",
+      iframeLink:
+        "https://www.youtube.com/embed/UAJ7fG2lyGY?si=9hCNiy1EdqFkKZzI",
+    },
+  ];
+  const seventhModule = [
+    {
+      moduleNumber: 7,
+      moduleTitle: "Open System Interconnection (OSI) model",
+      lectureCount: 1,
+      duration: "2:18 min",
+      videoTitle: "OSI model",
+      description: "Learn about OSI model and how it works?",
+      iframeLink:
+        "https://www.youtube.com/embed/KiTbmr5i6ZY?si=t91tbWoKE5NM9BfP",
+    },
+  ];
+  const eighthModule = [
+    {
+      moduleNumber: 8,
+      moduleTitle: "Network Toplogies",
+      lectureCount: 1,
+      duration: "1:23 min",
+      videoTitle: "Network Topoligies",
+      description: "Learn about Network Topoligies and how it works?",
+      iframeLink:
+        "https://www.youtube.com/embed/9ebbwQUKyHI?si=JJrDlkI6uUtkRwBa",
+    },
+  ];
+  const ninthModule = [
+    {
+      moduleNumber: 9,
+      moduleTitle: "OSI model comparision",
+      lectureCount: 1,
+      duration: "0:40 min",
+      videoTitle: "Comparison with the OSI Model",
+      description: "comparison with the OSI Model and how it different?",
+      iframeLink:
+        "https://www.youtube.com/embed/9ebbwQUKyHI?si=JJrDlkI6uUtkRwBa",
+    },
+  ];
 
   return (
     <div className="min-h-screen w-full bg-slate-900 overflow-y-auto">
@@ -88,6 +136,10 @@ export default function CCSA() {
         <ModuleList modules={thirdModule} />
         <ModuleList modules={forthModule} />
         <ModuleList modules={fifthModule} />
+        <ModuleList modules={sixthModule} />
+        <ModuleList modules={seventhModule} />
+        <ModuleList modules={eighthModule} />
+        <ModuleList modules={ninthModule} />
       </div>
     </div>
   );
