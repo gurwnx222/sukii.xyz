@@ -49,10 +49,50 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
+  // Sign up with email and password
+  const signup = async (email, password, displayName) => {
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
+      // Update profile with display name
+      if (displayName) {
+        await updateProfile(result.user, {
+          displayName: displayName,
+        });
+      }
+
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  };
+  // Sign in with email and password
+  const login = async (email, password) => {
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  };
+  // Reset password
+  const resetPassword = async (email) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+    } catch (error) {
+      throw error;
+    }
+  };
   const value = {
     user,
     loading,
+    signup,
+    login,
+    resetPassword,
     loginWithGoogle,
     logout,
     isAuthenticated: !!user,
