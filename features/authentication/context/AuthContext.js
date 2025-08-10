@@ -3,6 +3,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 import {
   onAuthStateChanged,
   signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  sendPasswordResetEmail,
   signOut,
   GoogleAuthProvider,
 } from "firebase/auth";
@@ -49,8 +53,7 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
-  // Sign up with email and password
-  const signup = async (email, password, displayName) => {
+  const signupWithEmail = async (email, password, displayName) => {
     try {
       const result = await createUserWithEmailAndPassword(
         auth,
@@ -58,41 +61,62 @@ export const AuthProvider = ({ children }) => {
         password
       );
 
-      // Update profile with display name
+      // Update profile with display name if provided
       if (displayName) {
         await updateProfile(result.user, {
           displayName: displayName,
         });
       }
 
+      // Send email verification
+      await sendEmailVerification(result.user);
+
       return result;
     } catch (error) {
+      console.error("Email signup error:", error);
       throw error;
     }
   };
-  // Sign in with email and password
-  const login = async (email, password) => {
+
+  // NEW: Sign in with email and password
+  const loginWithEmail = async (email, password) => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       return result;
     } catch (error) {
+      console.error("Email login error:", error);
       throw error;
     }
   };
-  // Reset password
+
+  // NEW: Reset password
   const resetPassword = async (email) => {
     try {
       await sendPasswordResetEmail(auth, email);
     } catch (error) {
+      console.error("Password reset error:", error);
+      throw error;
+    }
+  };
+
+  // NEW: Resend email verification
+  const resendEmailVerification = async () => {
+    try {
+      if (auth.currentUser) {
+        await sendEmailVerification(auth.currentUser);
+      }
+    } catch (error) {
+      console.error("Email verification error:", error);
       throw error;
     }
   };
   const value = {
     user,
     loading,
-    signup,
-    login,
+    signupWithEmail,
+    loginWithEmail,
     resetPassword,
+    resendEmailVerification,
     loginWithGoogle,
     logout,
     isAuthenticated: !!user,

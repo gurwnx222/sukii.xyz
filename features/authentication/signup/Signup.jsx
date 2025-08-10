@@ -2,122 +2,38 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff, Mail, X } from "lucide-react";
+import { X } from "lucide-react";
 import RegisterImage from "@/public/register-image.svg";
 import Image from "next/image";
 import decorStar from "@/public/decoratives/decor-star.svg";
 import Header from "@/components/Header";
 import { useAuth } from "@/features/authentication";
+import { EmailSignup } from "@/features/authentication";
 
 export default function Signup() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [touchedFields, setTouchedFields] = useState(new Set());
   const [googleLoading, setGoogleLoading] = useState(false);
 
-  // Auth hook and router
+  // Auth hook and router with safety check
   const { loginWithGoogle, isAuthenticated } = useAuth();
   const router = useRouter();
 
-  // Redirect if already authenticated
+  // Add a mounted state to prevent router usage before component is mounted
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
-    if (isAuthenticated) {
+    setIsMounted(true);
+  }, []);
+
+  // Redirect if already authenticated - only after component is mounted
+  useEffect(() => {
+    if (isMounted && isAuthenticated && router) {
       router.push("/courses");
     }
-  }, [isAuthenticated, router]);
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const getPasswordStrength = (password) => {
-    let score = 0;
-    const feedback = [];
-
-    if (password.length >= 8) score += 1;
-    else feedback.push("At least 8 characters");
-
-    if (/[a-z]/.test(password)) score += 1;
-    else feedback.push("One lowercase letter");
-
-    if (/[A-Z]/.test(password)) score += 1;
-    else feedback.push("One uppercase letter");
-
-    if (/\d/.test(password)) score += 1;
-    else feedback.push("One number");
-
-    if (/[^a-zA-Z0-9]/.test(password)) score += 1;
-    else feedback.push("One special character");
-
-    return { score, feedback };
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
-    }
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (getPasswordStrength(formData.password).score < 3) {
-      newErrors.password = "Password is too weak";
-    }
-
-    return newErrors;
-  };
-
-  const handleInputChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-
-    // Clear error for this field when user starts typing
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-    }
-  };
-
-  const handleBlur = (field) => {
-    setTouchedFields((prev) => new Set(prev).add(field));
-
-    // Validate on blur
-    const newErrors = validateForm();
-    setErrors((prev) => ({ ...prev, [field]: newErrors[field] }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    const newErrors = validateForm();
-    setErrors(newErrors);
-    setTouchedFields(new Set(["name", "email", "password"]));
-
-    if (Object.keys(newErrors).length === 0) {
-      // Simulate API call for email/password signup
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("Form submitted:", formData);
-      // Handle successful submission
-      // You can implement email/password signup here if needed
-    }
-
-    setIsSubmitting(false);
-  };
+  }, [isAuthenticated, router, isMounted]);
 
   // Google signup handler
   const handleGoogleSignup = async () => {
@@ -157,7 +73,10 @@ export default function Signup() {
     }
   };
 
-  const passwordStrength = getPasswordStrength(formData.password);
+  // Don't render until mounted to prevent hydration issues
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>
@@ -270,208 +189,25 @@ export default function Signup() {
                   </div>
 
                   {/* Email/Password Form */}
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Name field */}
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="name"
-                        className="text-white text-sm font-medium"
-                      >
-                        Name
-                      </label>
-                      <input
-                        id="name"
-                        type="text"
-                        placeholder="Enter your full name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          handleInputChange("name", e.target.value)
-                        }
-                        onBlur={() => handleBlur("name")}
-                        disabled={googleLoading}
-                        className={`w-full bg-gray-800/50 border rounded-md px-3 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 focus:border-purple-400 disabled:opacity-50 ${
-                          errors.name && touchedFields.has("name")
-                            ? "border-red-400"
-                            : "border-gray-600"
-                        }`}
-                        aria-describedby={
-                          errors.name ? "name-error" : undefined
-                        }
-                        aria-invalid={!!errors.name}
-                      />
-                      {errors.name && touchedFields.has("name") && (
-                        <p
-                          id="name-error"
-                          className="text-red-400 text-sm flex items-center gap-1"
-                        >
-                          <X className="w-4 h-4" />
-                          {errors.name}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Email field */}
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="email"
-                        className="text-white text-sm font-medium"
-                      >
-                        Email address
-                      </label>
-                      <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                        <input
-                          id="email"
-                          type="email"
-                          placeholder="hello@orbital.com"
-                          value={formData.email}
-                          onChange={(e) =>
-                            handleInputChange("email", e.target.value)
-                          }
-                          onBlur={() => handleBlur("email")}
-                          disabled={googleLoading}
-                          className={`w-full bg-gray-800/50 border rounded-md px-3 py-3 pl-10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 focus:border-purple-400 disabled:opacity-50 ${
-                            errors.email && touchedFields.has("email")
-                              ? "border-red-400"
-                              : "border-gray-600"
-                          }`}
-                          aria-describedby={
-                            errors.email ? "email-error" : undefined
-                          }
-                          aria-invalid={!!errors.email}
-                        />
-                      </div>
-                      {errors.email && touchedFields.has("email") && (
-                        <p
-                          id="email-error"
-                          className="text-red-400 text-sm flex items-center gap-1"
-                        >
-                          <X className="w-4 h-4" />
-                          {errors.email}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Password field */}
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="password"
-                        className="text-white text-sm font-medium"
-                      >
-                        Password
-                      </label>
-                      <div className="relative">
-                        <input
-                          id="password"
-                          type={showPassword ? "text" : "password"}
-                          placeholder="Create a strong password"
-                          value={formData.password}
-                          onChange={(e) =>
-                            handleInputChange("password", e.target.value)
-                          }
-                          onBlur={() => handleBlur("password")}
-                          disabled={googleLoading}
-                          className={`w-full bg-gray-800/50 border rounded-md px-3 py-3 pr-10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 focus:border-purple-400 disabled:opacity-50 ${
-                            errors.password && touchedFields.has("password")
-                              ? "border-red-400"
-                              : "border-gray-600"
-                          }`}
-                          aria-describedby={
-                            errors.password
-                              ? "password-error"
-                              : "password-strength"
-                          }
-                          aria-invalid={!!errors.password}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300"
-                          aria-label={
-                            showPassword ? "Hide password" : "Show password"
-                          }
-                          disabled={googleLoading}
-                        >
-                          {showPassword ? (
-                            <EyeOff className="w-5 h-5" />
-                          ) : (
-                            <Eye className="w-5 h-5" />
-                          )}
-                        </button>
-                      </div>
-
-                      {/* Password strength indicator */}
-                      {formData.password && (
-                        <div id="password-strength" className="space-y-2">
-                          <div className="flex gap-1">
-                            {[1, 2, 3, 4, 5].map((i) => (
-                              <div
-                                key={i}
-                                className={`h-1 flex-1 rounded-full ${
-                                  i <= passwordStrength.score
-                                    ? passwordStrength.score <= 2
-                                      ? "bg-red-400"
-                                      : passwordStrength.score <= 3
-                                      ? "bg-yellow-400"
-                                      : "bg-green-400"
-                                    : "bg-gray-600"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                          {passwordStrength.feedback.length > 0 && (
-                            <div className="text-xs text-gray-400">
-                              Missing: {passwordStrength.feedback.join(", ")}
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      {errors.password && touchedFields.has("password") && (
-                        <p
-                          id="password-error"
-                          className="text-red-400 text-sm flex items-center gap-1"
-                        >
-                          <X className="w-4 h-4" />
-                          {errors.password}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Terms and conditions */}
-                    <div className="text-center text-sm text-gray-300">
-                      I agree to the{" "}
-                      <a
-                        href="/terms"
-                        className="text-white underline hover:text-purple-300 transition-colors"
-                      >
-                        Terms of Service
-                      </a>{" "}
-                      and{" "}
-                      <a
-                        href="/privacy"
-                        className="text-white underline hover:text-purple-300 transition-colors"
-                      >
-                        Privacy Policy
-                      </a>
-                    </div>
-
-                    {/* Submit button */}
-                    <button
-                      type="submit"
-                      className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 px-4 rounded-md text-base font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                      disabled={isSubmitting || googleLoading}
+                  <EmailSignup className="w-full" />
+                  {/* Terms and conditions */}
+                  <div className="text-sm text-gray-400">
+                    By signing up, you agree to our{" "}
+                    <Link
+                      href="#"
+                      className="text-white underline hover:text-purple-300 transition-colors"
                     >
-                      {isSubmitting ? (
-                        <div className="flex items-center justify-center gap-2">
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Creating account...
-                        </div>
-                      ) : (
-                        "Create Account"
-                      )}
-                    </button>
-                  </form>
+                      Terms of Service
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="#"
+                      className="text-white underline hover:text-purple-300 transition-colors"
+                    >
+                      Privacy Policy
+                    </Link>
+                    .
+                  </div>
                 </div>
 
                 {/* Sign in link */}
