@@ -61,16 +61,9 @@ export const AuthProvider = ({ children }) => {
         password
       );
 
-      // Update profile with display name if provided
-      if (displayName) {
-        await updateProfile(result.user, {
-          displayName: displayName,
-        });
-      }
-
       // Send email verification
-      await sendEmailVerification(result.user);
-
+      const emailVerify = await sendEmailVerification(result.user);
+      console.log("Email verification sent:", emailVerify);
       return result;
     } catch (error) {
       console.error("Email signup error:", error);

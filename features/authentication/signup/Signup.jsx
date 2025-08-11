@@ -12,9 +12,7 @@ import { EmailSignup } from "@/features/authentication";
 
 export default function Signup() {
   const [errors, setErrors] = useState({});
-  const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [touchedFields, setTouchedFields] = useState(new Set());
   const [googleLoading, setGoogleLoading] = useState(false);
 
   // Auth hook and router with safety check
