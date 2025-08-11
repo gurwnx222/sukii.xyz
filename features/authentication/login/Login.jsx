@@ -10,15 +10,8 @@ import { useAuth } from "@/features/authentication";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
   const [errors, setErrors] = useState({});
-  const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [touchedFields, setTouchedFields] = useState(new Set());
-  const [rememberMe, setRememberMe] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
   // Auth hook and router
@@ -263,139 +256,6 @@ export default function Login() {
                       </span>
                     </div>
                   </div>
-
-                  {/* Email field */}
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="email"
-                      className="text-white text-sm font-medium"
-                    >
-                      Email address
-                    </label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                      <input
-                        id="email"
-                        type="email"
-                        placeholder="hello@orbital.com"
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        onBlur={() => handleBlur("email")}
-                        className={`w-full bg-gray-800/50 border rounded-md px-3 py-3 pl-10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 focus:border-purple-400 ${
-                          errors.email && touchedFields.has("email")
-                            ? "border-red-400"
-                            : "border-gray-600"
-                        }`}
-                        aria-describedby={
-                          errors.email ? "email-error" : undefined
-                        }
-                        aria-invalid={!!errors.email}
-                      />
-                    </div>
-                    {errors.email && touchedFields.has("email") && (
-                      <p
-                        id="email-error"
-                        className="text-red-400 text-sm flex items-center gap-1"
-                      >
-                        <X className="w-4 h-4" />
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Password field */}
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="password"
-                      className="text-white text-sm font-medium"
-                    >
-                      Password
-                    </label>
-                    <div className="relative">
-                      <input
-                        id="password"
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={(e) =>
-                          handleInputChange("password", e.target.value)
-                        }
-                        onBlur={() => handleBlur("password")}
-                        className={`w-full bg-gray-800/50 border rounded-md px-3 py-3 pr-10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 focus:border-purple-400 ${
-                          errors.password && touchedFields.has("password")
-                            ? "border-red-400"
-                            : "border-gray-600"
-                        }`}
-                        aria-describedby={
-                          errors.password ? "password-error" : undefined
-                        }
-                        aria-invalid={!!errors.password}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300"
-                        aria-label={
-                          showPassword ? "Hide password" : "Show password"
-                        }
-                      >
-                        {showPassword ? (
-                          <EyeOff className="w-5 h-5" />
-                        ) : (
-                          <Eye className="w-5 h-5" />
-                        )}
-                      </button>
-                    </div>
-
-                    {errors.password && touchedFields.has("password") && (
-                      <p
-                        id="password-error"
-                        className="text-red-400 text-sm flex items-center gap-1"
-                      >
-                        <X className="w-4 h-4" />
-                        {errors.password}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Remember me and Forgot password */}
-                  <div className="flex items-center justify-between">
-                    <label className="flex items-center">
-                      <input
-                        type="checkbox"
-                        checked={rememberMe}
-                        onChange={(e) => setRememberMe(e.target.checked)}
-                        className="w-4 h-4 text-purple-600 bg-gray-800 border-gray-600 rounded focus:ring-purple-500 focus:ring-2"
-                      />
-                      <span className="ml-2 text-sm text-gray-300">
-                        Remember me
-                      </span>
-                    </label>
-                    <a
-                      href="/forgot-password"
-                      className="text-sm text-purple-400 hover:text-purple-300 transition-colors"
-                    >
-                      Forgot password?
-                    </a>
-                  </div>
-
-                  {/* Submit button */}
-                  <button
-                    type="submit"
-                    className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-600/50 disabled:cursor-not-allowed text-white py-3 px-4 rounded-md text-base font-medium transition-colors"
-                    disabled={isSubmitting || googleLoading}
-                  >
-                    {isSubmitting ? (
-                      <div className="flex items-center justify-center gap-2">
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Signing in...
-                      </div>
-                    ) : (
-                      "Sign In"
-                    )}
-                  </button>
                 </form>
 
                 {/* Sign up link */}
