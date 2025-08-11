@@ -6,7 +6,7 @@ import RegisterImage from "@/public/register-image.svg";
 import Image from "next/image";
 import decorStar from "@/public/decoratives/decor-star.svg";
 import Header from "@/components/Header";
-import { useAuth } from "@/features/authentication";
+import { EmailLogin, useAuth } from "@/features/authentication";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -257,7 +257,8 @@ export default function Login() {
                     </div>
                   </div>
                 </form>
-
+                {/* Email Login */}
+                <EmailLogin />
                 {/* Sign up link */}
                 <div className="text-center mt-6 text-sm text-gray-300">
                   Don't have an account?{" "}

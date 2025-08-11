@@ -98,7 +98,7 @@ const EmailSignup = ({ onSuccess, className = "" }) => {
         if (onSuccess) {
           onSuccess();
         } else {
-          router.push("/verify-email");
+          router.push("/courses");
         }
       } catch (error) {
         setErrors({ submit: getErrorMessage(error.code) });

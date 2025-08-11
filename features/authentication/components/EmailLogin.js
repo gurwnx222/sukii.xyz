@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "../hooks/useAuth";
 import { Eye, EyeOff, Mail, X } from "lucide-react";
@@ -60,7 +60,7 @@ const EmailLogin = ({ onSuccess, className = "" }) => {
         if (onSuccess) {
           onSuccess();
         } else {
-          router.push("/dashboard");
+          router.push("/courses");
         }
       } catch (error) {
         setErrors({ submit: getErrorMessage(error.code) });
