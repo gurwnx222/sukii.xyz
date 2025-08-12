@@ -16,7 +16,7 @@ export default function VerifyEmail() {
     if (!user) {
       router.push("/login");
     } else if (user.emailVerified) {
-      router.push("/dashboard");
+      router.push("/courses");
     }
   }, [user, router]);
 

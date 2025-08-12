@@ -9,6 +9,9 @@ import {
   sendPasswordResetEmail,
   signOut,
   GoogleAuthProvider,
+  getAuth,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
 } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
@@ -28,14 +31,114 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe; // Cleanup on unmount
   }, []);
 
+  // Email verification configuration
+  const actionCodeSettings = {
+    url: "https://www.sukii.xyz/email-verified", // Change this to a verification page
+    handleCodeInApp: true,
+  };
+
+  // Email verification function
+  const sendVerificationEmail = async (user) => {
+    try {
+      await sendEmailVerification(user, actionCodeSettings);
+      console.log("Verification email sent!");
+      return {
+        success: true,
+        message: "Please check your email and click the verification link!",
+      };
+    } catch (error) {
+      console.error("Error sending verification email:", error);
+      return {
+        success: false,
+        message: "Error sending verification email. Please try again.",
+      };
+    }
+  };
+
+  // Handle email verification link (call this on your verification page)
+  const handleEmailVerification = async () => {
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      let email = localStorage.getItem("emailForSignIn");
+
+      if (!email) {
+        email = window.prompt("Please provide your email for confirmation");
+      }
+
+      if (!email) {
+        return {
+          success: false,
+          message: "Email address required for verification.",
+        };
+      }
+
+      try {
+        const result = await signInWithEmailLink(
+          auth,
+          email,
+          window.location.href
+        );
+        localStorage.removeItem("emailForSignIn");
+
+        return {
+          success: true,
+          message: "Email verified successfully!",
+          user: result.user,
+        };
+      } catch (error) {
+        console.error("Error verifying email:", error);
+        return {
+          success: false,
+          message: `Error verifying email: ${error.message}`,
+        };
+      }
+    }
+
+    return { success: false, message: "Invalid verification link." };
+  };
+
+  // Sign up with email and password
+  const signupWithEmail = async (email, password, displayName) => {
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      // Send email verification
+      const verificationResult = await sendVerificationEmail(result.user);
+
+      // Save email for verification process
+      localStorage.setItem("emailForSignIn", email);
+
+      console.log("Email verification sent:", verificationResult);
+
+      return {
+        ...result,
+        verificationSent: verificationResult.success,
+        verificationMessage: verificationResult.message,
+      };
+    } catch (error) {
+      console.error("Email signup error:", error);
+      throw error;
+    }
+  };
+
+  // Sign in with email and password
+  const loginWithEmail = async (email, password) => {
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      return result;
+    } catch (error) {
+      console.error("Email login error:", error);
+      throw error;
+    }
+  };
+
   // Sign in with Google
   const loginWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      // Optional: Add additional scopes if needed
-      // provider.addScope('profile');
-      // provider.addScope('email');
-
       const result = await signInWithPopup(auth, provider);
       return result;
     } catch (error) {
@@ -53,56 +156,35 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
-  const signupWithEmail = async (email, password, displayName) => {
-    try {
-      const result = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
 
-      // Send email verification
-      const emailVerify = await sendEmailVerification(result.user);
-      console.log("Email verification sent:", emailVerify);
-      return result;
-    } catch (error) {
-      console.error("Email signup error:", error);
-      throw error;
-    }
-  };
-
-  // NEW: Sign in with email and password
-  const loginWithEmail = async (email, password) => {
-    try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
-      return result;
-    } catch (error) {
-      console.error("Email login error:", error);
-      throw error;
-    }
-  };
-
-  // NEW: Reset password
+  // Reset password
   const resetPassword = async (email) => {
     try {
       await sendPasswordResetEmail(auth, email);
+      return { success: true, message: "Password reset email sent!" };
     } catch (error) {
       console.error("Password reset error:", error);
       throw error;
     }
   };
 
-  // NEW: Resend email verification
+  // Resend email verification
   const resendEmailVerification = async () => {
     try {
-      if (auth.currentUser) {
-        await sendEmailVerification(auth.currentUser);
+      if (auth.currentUser && !auth.currentUser.emailVerified) {
+        const result = await sendVerificationEmail(auth.currentUser);
+        return result;
+      } else if (auth.currentUser?.emailVerified) {
+        return { success: false, message: "Email is already verified!" };
+      } else {
+        return { success: false, message: "No user is currently signed in." };
       }
     } catch (error) {
       console.error("Email verification error:", error);
       throw error;
     }
   };
+
   const value = {
     user,
     loading,
@@ -112,7 +194,9 @@ export const AuthProvider = ({ children }) => {
     resendEmailVerification,
     loginWithGoogle,
     logout,
+    handleEmailVerification, // Add this for handling verification links
     isAuthenticated: !!user,
+    isEmailVerified: user?.emailVerified || false, // Add verification status
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
