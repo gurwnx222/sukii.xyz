@@ -7,7 +7,7 @@ import ArticleBASI from "../components/articles/ArticleBASI";
 
 export default function BASI() {
   const firstArticle = {
-    articleTitle: "Understanding Blockchain Technology",
+    articleTitle: "Syllabus - Blockchain Technology",
     description: <ArticleBASI />,
   };
 

@@ -3,11 +3,12 @@ import React from "react";
 import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
 import ArticleCard from "../components/ArticleCard";
+import ArticleCASI from "../components/articles/ArticleCASI";
 
 export default function CASI() {
   const firstArticle = {
-    articleTitle: "Understanding Keyloggers",
-    description: "An overview of keyloggers and their implications.",
+    articleTitle: "Syllabus - CASI",
+    description: <ArticleCASI />,
   };
   const firstModule = [
     {
