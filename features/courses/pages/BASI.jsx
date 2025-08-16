@@ -2,8 +2,15 @@
 import React from "react";
 import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
+import ArticleCard from "../components/articles/ArticleCard";
+import ArticleBASI from "../components/articles/ArticleBASI";
 
 export default function BASI() {
+  const firstArticle = {
+    articleTitle: "Understanding Blockchain Technology",
+    description: ArticleBASI,
+  };
+
   const firstModule = [
     {
       moduleNumber: 1,
@@ -16,6 +23,7 @@ export default function BASI() {
         "https://www.youtube.com/embed/7w-P8Q7L56Q?si=j0-6YPi2TyQfp24x",
     },
   ];
+
   const secondModule = [
     {
       moduleNumber: 2,
@@ -28,6 +36,7 @@ export default function BASI() {
         "https://www.youtube.com/embed/kuOT23_xIek?si=tnkNRyA2cGZIeteu",
     },
   ];
+
   const thirdModule = [
     {
       moduleNumber: 3,
@@ -40,6 +49,7 @@ export default function BASI() {
         "https://www.youtube.com/embed/ncimQe8Plkk?si=9gZ9HjL6pxnaDczA",
     },
   ];
+
   const forthModule = [
     {
       moduleNumber: 4,
@@ -52,6 +62,7 @@ export default function BASI() {
         "https://www.youtube.com/embed/4S7AUItbPhA?si=kyIqt2fa5mcvWr9j",
     },
   ];
+
   const fifthModule = [
     {
       moduleNumber: 5,
@@ -77,6 +88,10 @@ export default function BASI() {
             "Blockchain Engineer",
             "Blockchain Developer",
           ]}
+        />
+        <ArticleCard
+          articleTitle={firstArticle.articleTitle}
+          description={firstArticle.description}
         />
         <ModuleList modules={firstModule} />
         <ModuleList modules={secondModule} />

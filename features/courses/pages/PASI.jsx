@@ -2,8 +2,13 @@
 import React from "react";
 import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
+import ArticleCard from "../components/articles/ArticleCard";
 
 export default function PASI() {
+  const firstArticle = {
+    articleTitle: "Understanding Project Management",
+    description: "An overview of project management principles and practices.",
+  };
   const firstModule = [
     {
       moduleNumber: 1,
@@ -84,6 +89,10 @@ export default function PASI() {
           courseName="PASI - Project Application & Solution Integration"
           courseDescription="The Project Analytics Specialist and Integration (PASI) course provides essential skills in project analysis, data-driven decision-making, and system integration. It covers key concepts in project management, performance metrics, and analytical tools to optimize workflows. This vendor-neutral course is designed to prepare you for the PASI certification exam."
           courseTags={["Team Lead", "Project Coordinator"]}
+        />
+        <ArticleCard
+          articleTitle={firstArticle.articleTitle}
+          description={firstArticle.description}
         />
         <ModuleList modules={firstModule} />
         <ModuleList modules={secondModule} />

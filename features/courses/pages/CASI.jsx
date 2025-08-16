@@ -2,8 +2,13 @@
 import React from "react";
 import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
+import ArticleCard from "../components/articles/ArticleCard";
 
 export default function CASI() {
+  const firstArticle = {
+    articleTitle: "Understanding Keyloggers",
+    description: "An overview of keyloggers and their implications.",
+  };
   const firstModule = [
     {
       moduleNumber: 1,
@@ -42,6 +47,10 @@ export default function CASI() {
             "Technical Analyst",
             "Security Engineer",
           ]}
+        />
+        <ArticleCard
+          articleTitle={firstArticle.articleTitle}
+          description={firstArticle.description}
         />
         <ModuleList modules={firstModule} />
         <ModuleList modules={secondModule} />

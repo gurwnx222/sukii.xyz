@@ -2,8 +2,12 @@
 import React from "react";
 import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
-
+import ArticleCard from "../components/articles/ArticleCard";
 export default function CCSA() {
+  const firstArticle = {
+    articleTitle: "Understanding Cloud Computing",
+    description: "An overview of cloud computing and its benefits.",
+  };
   const firstModule = [
     {
       moduleNumber: 1,
@@ -130,6 +134,10 @@ export default function CCSA() {
             "Jr Cloud Admin",
             "Jr Security Admin",
           ]}
+        />
+        <ArticleCard
+          articleTitle={firstArticle.articleTitle}
+          description={firstArticle.description}
         />
         <ModuleList modules={firstModule} />
         <ModuleList modules={secondModule} />
