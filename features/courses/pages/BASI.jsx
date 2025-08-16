@@ -2,7 +2,7 @@
 import React from "react";
 import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
-import ArticleCard from "../components/articles/ArticleCard";
+import ArticleCard from "../components/ArticleCard";
 import ArticleBASI from "../components/articles/ArticleBASI";
 
 export default function BASI() {
