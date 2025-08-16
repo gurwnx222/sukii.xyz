@@ -3,10 +3,11 @@ import React from "react";
 import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
 import ArticleCard from "../components/ArticleCard";
+import ArticleCCSA from "../components/articles/ArticleCCSA";
 export default function CCSA() {
   const firstArticle = {
-    articleTitle: "Understanding Cloud Computing",
-    description: "An overview of cloud computing and its benefits.",
+    articleTitle: "Syllabus - Certified Computer Systems Analyst",
+    description: <ArticleCCSA />,
   };
   const firstModule = [
     {

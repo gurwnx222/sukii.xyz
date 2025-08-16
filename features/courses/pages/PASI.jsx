@@ -3,11 +3,12 @@ import React from "react";
 import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
 import ArticleCard from "../components/ArticleCard";
+import ArticlePASI from "../components/articles/ArticlePASI";
 
 export default function PASI() {
   const firstArticle = {
     articleTitle: "Understanding Project Management",
-    description: "An overview of project management principles and practices.",
+    description: <ArticlePASI />,
   };
   const firstModule = [
     {
