@@ -4,6 +4,7 @@ import { useState } from "react";
 const ArticleCard = ({
   articleTitle = "Untitled Article",
   description = "",
+  maxHeight = "500px", // Configurable max height
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -22,7 +23,38 @@ const ArticleCard = ({
   return (
     // Added consistent margin and max-width to match ModuleList layout
     <div className="w-full max-w-4xl mx-auto px-15 mb-6">
-      <div className="w-full bg-slate-800 border border-slate-600 rounded-lg overflow-hidden transition-all duration-300 ease-in-out">
+      <style jsx>{`
+        .custom-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: #64748b transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+          border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background-color: #64748b;
+          border-radius: 10px;
+          border: 2px solid transparent;
+          background-clip: content-box;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background-color: #94a3b8;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-corner {
+          background: transparent;
+        }
+      `}</style>
+
+      <div className="w-full bg-slate-800 border border-slate-600 rounded-lg overflow-hidden transition-all duration-300 ease-in-out shadow-lg">
         {/* Header - Clickable */}
         <div
           className={`p-4 transition-colors duration-200 ${
@@ -61,25 +93,33 @@ const ArticleCard = ({
           </div>
         </div>
 
-        {/* Expandable Content with smooth height transition */}
+        {/* Expandable Content with smooth height transition and scrollable area */}
         <div
           className={`border-t border-slate-600 bg-slate-800 transition-all duration-300 ease-in-out overflow-hidden ${
-            isExpanded && hasContent
-              ? "max-h-screen opacity-100"
-              : "max-h-0 opacity-0"
+            isExpanded && hasContent ? "opacity-100" : "max-h-0 opacity-0"
           }`}
+          style={{
+            maxHeight: isExpanded && hasContent ? maxHeight : "0px",
+          }}
         >
           {hasContent && (
-            <div className="p-6">
-              {/* Handle both string descriptions and React components */}
-              {typeof description === "string" ? (
-                <p className="text-slate-300 text-sm mb-4 leading-relaxed">
-                  {description}
-                </p>
-              ) : (
-                // Render React component directly
-                description
-              )}
+            <div
+              className="custom-scrollbar overflow-y-auto h-full"
+              style={{ maxHeight: maxHeight }}
+            >
+              <div className="p-6">
+                {/* Handle both string descriptions and React components */}
+                {typeof description === "string" ? (
+                  <div className="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">
+                    {description}
+                  </div>
+                ) : (
+                  // Render React component directly
+                  <div className="text-slate-300 text-sm leading-relaxed">
+                    {description}
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </div>
@@ -87,5 +127,4 @@ const ArticleCard = ({
     </div>
   );
 };
-
 export default ArticleCard;
