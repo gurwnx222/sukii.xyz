@@ -1,13 +1,10 @@
 import {
   ChevronRight,
   LogOut,
-  Building2,
-  Users,
-  Database,
-  Shield,
   Computer,
   Code,
   Cloud,
+  Mic,
   Blocks,
 } from "lucide-react";
 import Logo from "@/public/logos/orbital-logo-full.svg";
@@ -20,6 +17,7 @@ export default function SideBar() {
     { name: "PASI", icon: Code, href: "/courses/categories/PASI" },
     { name: "CASI", icon: Cloud, href: "/courses/categories/CASI" },
     { name: "BASI", icon: Blocks, href: "/courses/categories/BASI" },
+    { name: "Podcasts", icon: Mic, href: "/courses/categories/podcasts" },
   ];
 
   return (
