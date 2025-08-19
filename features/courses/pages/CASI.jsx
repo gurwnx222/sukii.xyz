@@ -4,11 +4,21 @@ import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
 import ArticleCard from "../components/ArticleCard";
 import ArticleCASI from "../components/articles/ArticleCASI";
+import ArticleTwoCASI from "../components/articles/ArticleTwoCASI";
+import ArticleThreeCASI from "../components/articles/ArticleThreeCASI";
 
 export default function CASI() {
   const firstArticle = {
-    articleTitle: "Syllabus - CASI",
+    articleTitle: "Article 0.1 - CASI",
     description: <ArticleCASI />,
+  };
+  const secondArticle = {
+    articleTitle: "Article 0.2 - CASI",
+    description: <ArticleTwoCASI />,
+  };
+  const thirdArticle = {
+    articleTitle: "Article 0.3 - CASI",
+    description: <ArticleThreeCASI />,
   };
   const firstModule = [
     {
@@ -53,6 +63,14 @@ export default function CASI() {
           articleTitle={firstArticle.articleTitle}
           description={firstArticle.description}
         />
+        <ArticleCard
+          articleTitle={secondArticle.articleTitle}
+          description={secondArticle.description}
+        />
+        {/*<ArticleCard
+          articleTitle={thirdArticle.articleTitle}
+          description={thirdArticle.description}
+        />*/}
         <ModuleList modules={firstModule} />
         <ModuleList modules={secondModule} />
       </div>
