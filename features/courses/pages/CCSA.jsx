@@ -173,6 +173,10 @@ export default function CCSA() {
           articleTitle={forthArticle.articleTitle}
           description={forthArticle.description}
         />
+        <ArticleCard
+          articleTitle={fifthArticle.articleTitle}
+          description={fifthArticle.description}
+        />
         <ModuleList modules={firstModule} />
         <ModuleList modules={secondModule} />
         <ModuleList modules={thirdModule} />

@@ -4,11 +4,26 @@ import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
 import ArticleCard from "../components/ArticleCard";
 import ArticlePASI from "../components/articles/ArticlePASI";
+import ArticleTwoPASI from "../components/articles/ArticleTwoPASI";
+import ArticleThreePASI from "../components/articles/ArticleThreePASI";
+import ArticleFourPASI from "../components/articles/ArticleFourPASI";
 
 export default function PASI() {
   const firstArticle = {
-    articleTitle: "Understanding Project Management",
+    articleTitle: "Article 0.1 - PASI",
     description: <ArticlePASI />,
+  };
+  const secondArticle = {
+    articleTitle: "Article 0.2 - PASI",
+    description: <ArticleTwoPASI />,
+  };
+  const thirdArticle = {
+    articleTitle: "Article 0.3 - PASI",
+    description: <ArticleThreePASI />,
+  };
+  const fourthArticle = {
+    articleTitle: "Article 0.4 - PASI",
+    description: <ArticleFourPASI />,
   };
   const firstModule = [
     {
@@ -94,6 +109,18 @@ export default function PASI() {
         <ArticleCard
           articleTitle={firstArticle.articleTitle}
           description={firstArticle.description}
+        />
+        <ArticleCard
+          articleTitle={secondArticle.articleTitle}
+          description={secondArticle.description}
+        />
+        <ArticleCard
+          articleTitle={thirdArticle.articleTitle}
+          description={thirdArticle.description}
+        />
+        <ArticleCard
+          articleTitle={fourthArticle.articleTitle}
+          description={fourthArticle.description}
         />
         <ModuleList modules={firstModule} />
         <ModuleList modules={secondModule} />
