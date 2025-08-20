@@ -6,6 +6,8 @@ import ArticleCard from "../components/ArticleCard";
 import ArticleCASI from "../components/articles/ArticleCASI";
 import ArticleTwoCASI from "../components/articles/ArticleTwoCASI";
 import ArticleThreeCASI from "../components/articles/ArticleThreeCASI";
+import ArticleFourCASI from "../components/articles/ArticleFourCASI";
+import ArticleFifthCASI from "../components/articles/ArticleFifthCASI";
 
 export default function CASI() {
   const firstArticle = {
@@ -19,6 +21,14 @@ export default function CASI() {
   const thirdArticle = {
     articleTitle: "Article 0.3 - CASI",
     description: <ArticleThreeCASI />,
+  };
+  const fourthArticle = {
+    articleTitle: "Article 0.4 - CASI",
+    description: <ArticleFourCASI />,
+  };
+  const fifthArticle = {
+    articleTitle: "Article 0.5 - CASI",
+    description: <ArticleFifthCASI />,
   };
   const firstModule = [
     {
@@ -67,10 +77,18 @@ export default function CASI() {
           articleTitle={secondArticle.articleTitle}
           description={secondArticle.description}
         />
-        {/*<ArticleCard
+        <ArticleCard
           articleTitle={thirdArticle.articleTitle}
           description={thirdArticle.description}
-        />*/}
+        />
+        <ArticleCard
+          articleTitle={fourthArticle.articleTitle}
+          description={fourthArticle.description}
+        />
+        <ArticleCard
+          articleTitle={fifthArticle.articleTitle}
+          description={fifthArticle.description}
+        />
         <ModuleList modules={firstModule} />
         <ModuleList modules={secondModule} />
       </div>

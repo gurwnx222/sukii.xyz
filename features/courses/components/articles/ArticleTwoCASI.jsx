@@ -7,10 +7,10 @@ const ArticleTwoCCSA = () => {
         {/* Header */}
         <div>
           <h1 style={{ color: "white" }}>
-            <strong>CCSA Articles</strong>
+            <strong>CASI Articles</strong>
           </h1>
           <p style={{ color: "#9CA3AF" }}>
-            Certified Cybersecurity Systems Analyst
+            Cybersecurity Analytics and Solutions Implementation
           </p>
         </div>
 
