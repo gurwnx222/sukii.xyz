@@ -4,10 +4,31 @@ import CourseHeader from "../components/CourseHeader";
 import ModuleList from "../components/ModuleList";
 import ArticleCard from "../components/ArticleCard";
 import ArticleCCSA from "../components/articles/ArticleCCSA";
+import ArticleTwoCCSA from "../components/articles/ArticleTwoCCSA";
+import ArticleThreeCCSA from "../components/articles/ArticleThreeCCSA";
+import ArticleFourCCSA from "../components/articles/ArticleFourCCSA";
+import ArticleFiveCCSA from "../components/articles/ArticleFiveCCSA";
+
 export default function CCSA() {
   const firstArticle = {
-    articleTitle: "Syllabus - Certified Computer Systems Analyst",
+    articleTitle: "Article 0.1 - CCSA",
     description: <ArticleCCSA />,
+  };
+  const secondArticle = {
+    articleTitle: "Article 0.2 - CCSA",
+    description: <ArticleTwoCCSA />,
+  };
+  const thirdArticle = {
+    articleTitle: "Article 0.3 - CCSA",
+    description: <ArticleThreeCCSA />,
+  };
+  const forthArticle = {
+    articleTitle: "Article 0.4 - CCSA",
+    description: <ArticleFourCCSA />,
+  };
+  const fifthArticle = {
+    articleTitle: "Article 0.5 - CCSA",
+    description: <ArticleFiveCCSA />,
   };
   const firstModule = [
     {
@@ -139,6 +160,18 @@ export default function CCSA() {
         <ArticleCard
           articleTitle={firstArticle.articleTitle}
           description={firstArticle.description}
+        />
+        <ArticleCard
+          articleTitle={secondArticle.articleTitle}
+          description={secondArticle.description}
+        />
+        <ArticleCard
+          articleTitle={thirdArticle.articleTitle}
+          description={thirdArticle.description}
+        />
+        <ArticleCard
+          articleTitle={forthArticle.articleTitle}
+          description={forthArticle.description}
         />
         <ModuleList modules={firstModule} />
         <ModuleList modules={secondModule} />
