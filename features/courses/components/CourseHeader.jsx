@@ -10,7 +10,7 @@ export default function CourseHeader({
   return (
     <div className="flex flex-col items-center justify-center px-4">
       {/* Course Name Section */}
-      <div className="w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-lg p-3 mt-25 md:p-4 md:mt-4 md:mt-8">
+      <div className="w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-lg p-3 mt-25 md:p-4 md:mt-8">
         <h1 className="text-lg md:text-2xl lg:text-3xl font-normal text-white leading-tight text-center md:text-left">
           {courseName}
         </h1>
