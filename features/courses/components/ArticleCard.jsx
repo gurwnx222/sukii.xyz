@@ -21,8 +21,8 @@ const ArticleCard = ({
   };
 
   return (
-    // Added consistent margin and max-width to match ModuleList layout
-    <div className="w-full max-w-4xl mx-auto px-15 mb-6">
+    // Updated to match header layout: centered with max-width and responsive padding
+    <div className="flex flex-col items-center justify-center px-4 mb-4 md:mb-6">
       <style jsx>{`
         .custom-scrollbar {
           scrollbar-width: thin;
@@ -54,10 +54,10 @@ const ArticleCard = ({
         }
       `}</style>
 
-      <div className="w-full bg-slate-800 border border-slate-600 rounded-lg overflow-hidden transition-all duration-300 ease-in-out shadow-lg">
-        {/* Header - Clickable */}
+      <div className="w-full max-w-3xl bg-slate-800 border border-slate-600 rounded-lg overflow-hidden transition-all duration-300 ease-in-out shadow-lg">
+        {/* Header - Clickable with responsive padding and typography */}
         <div
-          className={`p-4 transition-colors duration-200 ${
+          className={`p-3 md:p-4 transition-colors duration-200 ${
             hasContent
               ? "hover:bg-slate-700 cursor-pointer"
               : "hover:bg-slate-800"
@@ -66,15 +66,15 @@ const ArticleCard = ({
         >
           <div className="flex items-center justify-between">
             <div className="flex-1">
-              <h3 className="text-white font-medium text-lg">
+              <h3 className="text-white font-medium text-sm md:text-lg lg:text-xl leading-tight">
                 {safeArticleTitle}
               </h3>
             </div>
-            {/* Added dropdown arrow for consistency */}
+            {/* Responsive dropdown arrow */}
             {hasContent && (
-              <div className="ml-4">
+              <div className="ml-3 md:ml-4">
                 <svg
-                  className={`w-5 h-5 text-slate-400 transform transition-transform duration-300 ${
+                  className={`w-4 h-4 md:w-5 md:h-5 text-slate-400 transform transition-transform duration-300 ${
                     isExpanded ? "rotate-180" : ""
                   }`}
                   fill="none"
@@ -93,7 +93,7 @@ const ArticleCard = ({
           </div>
         </div>
 
-        {/* Expandable Content with smooth height transition and scrollable area */}
+        {/* Expandable Content with responsive padding and improved typography */}
         <div
           className={`border-t border-slate-600 bg-slate-800 transition-all duration-300 ease-in-out overflow-hidden ${
             isExpanded && hasContent ? "opacity-100" : "max-h-0 opacity-0"
@@ -107,15 +107,15 @@ const ArticleCard = ({
               className="custom-scrollbar overflow-y-auto h-full"
               style={{ maxHeight: maxHeight }}
             >
-              <div className="p-6">
-                {/* Handle both string descriptions and React components */}
+              <div className="p-4 md:p-6">
+                {/* Handle both string descriptions and React components with improved typography */}
                 {typeof description === "string" ? (
-                  <div className="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">
+                  <div className="text-slate-300 text-sm md:text-base leading-relaxed md:leading-loose whitespace-pre-wrap">
                     {description}
                   </div>
                 ) : (
-                  // Render React component directly
-                  <div className="text-slate-300 text-sm leading-relaxed">
+                  // Render React component directly with responsive styling
+                  <div className="text-slate-300 text-sm md:text-base leading-relaxed md:leading-loose">
                     {description}
                   </div>
                 )}
@@ -127,4 +127,5 @@ const ArticleCard = ({
     </div>
   );
 };
+
 export default ArticleCard;
