@@ -118,21 +118,21 @@ export default function Podcasts() {
   };
 
   const PodcastSection = ({ podcast }) => (
-    <div className="mb-8">
-      <h2 className="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
-        <div className="w-1 h-8 bg-gradient-to-b from-purple-400 to-purple-600 rounded-full"></div>
+    <div className="mb-6 sm:mb-8">
+      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 flex items-center space-x-2 sm:space-x-3 px-2 sm:px-0">
+        <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-purple-400 to-purple-600 rounded-full"></div>
         <span className="bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent">
           {podcast.title}
         </span>
       </h2>
       {podcast.episodes.length > 0 ? (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {podcast.episodes.map((episode) => (
             <div
               key={episode.id}
-              className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 rounded-xl p-6 shadow-2xl border border-slate-700 hover:border-purple-600/30 transition-all duration-300 hover:shadow-purple-500/10"
+              className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 rounded-xl p-4 sm:p-6 shadow-2xl border border-slate-700 hover:border-purple-600/30 transition-all duration-300 hover:shadow-purple-500/10"
             >
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col space-y-3 sm:space-y-4">
                 <div>
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
@@ -144,17 +144,17 @@ export default function Podcasts() {
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-white bg-gradient-to-r from-white to-green-100 bg-clip-text">
+                    <h3 className="text-lg md:text-xl font-bold text-white bg-gradient-to-r from-white to-green-100 bg-clip-text">
                       {episode.title}
                     </h3>
                   </div>
-                  <p className="text-slate-300 text-sm mb-3 leading-relaxed">
+                  <p className="text-slate-300 text-sm md:text-base mb-3 leading-relaxed">
                     {episode.description}
                   </p>
-                  <div className="flex items-center space-x-4 text-sm">
+                  <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 text-sm">
                     <div className="flex items-center space-x-1 text-green-400 font-medium">
                       <svg
-                        className="w-4 h-4"
+                        className="w-4 h-4 flex-shrink-0"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -162,16 +162,16 @@ export default function Podcasts() {
                       </svg>
                       <span>Duration: {episode.duration}</span>
                     </div>
-                    <span className="text-slate-500">•</span>
+                    <span className="text-slate-500 hidden sm:inline">•</span>
                     <div className="flex items-center space-x-1 text-slate-400">
                       <svg
-                        className="w-4 h-4"
+                        className="w-4 h-4 flex-shrink-0"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
                         <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
                       </svg>
-                      <span>
+                      <span className="break-all">
                         Published:{" "}
                         {new Date(episode.publishDate).toLocaleDateString()}
                       </span>
@@ -180,10 +180,10 @@ export default function Podcasts() {
                 </div>
 
                 <div className="w-full">
-                  <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-4 border border-slate-600 shadow-xl">
+                  <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-3 sm:p-4 border border-slate-600 shadow-xl">
                     <audio
                       controls
-                      className="w-full h-12 bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg shadow-lg 
+                      className="w-full h-10 sm:h-12 bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg shadow-lg 
                                [&::-webkit-media-controls-panel]:bg-gradient-to-r [&::-webkit-media-controls-panel]:from-slate-800 [&::-webkit-media-controls-panel]:to-slate-700
                                [&::-webkit-media-controls-play-button]:bg-purple-700 [&::-webkit-media-controls-play-button]:rounded-full
                                [&::-webkit-media-controls-timeline]:bg-slate-600 [&::-webkit-media-controls-timeline]:rounded-full
@@ -200,19 +200,19 @@ export default function Podcasts() {
                     </audio>
 
                     {/* Custom Spotify-like decorative elements */}
-                    <div className="flex items-center justify-between mt-3 px-2">
+                    <div className="flex items-center justify-between mt-2 sm:mt-3 px-1 sm:px-2">
                       <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full animate-pulse"></div>
                         <span className="text-xs text-slate-400 font-medium">
                           Now Playing
                         </span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <div className="w-1 h-3 bg-purple-400 rounded animate-pulse delay-100"></div>
-                        <div className="w-1 h-4 bg-purple-400 rounded animate-pulse delay-200"></div>
-                        <div className="w-1 h-2 bg-purple-400 rounded animate-pulse delay-300"></div>
-                        <div className="w-1 h-5 bg-purple-400 rounded animate-pulse delay-400"></div>
-                        <div className="w-1 h-3 bg-purple-400 rounded animate-pulse delay-500"></div>
+                        <div className="w-0.5 sm:w-1 h-2 sm:h-3 bg-purple-400 rounded animate-pulse delay-100"></div>
+                        <div className="w-0.5 sm:w-1 h-3 sm:h-4 bg-purple-400 rounded animate-pulse delay-200"></div>
+                        <div className="w-0.5 sm:w-1 h-1.5 sm:h-2 bg-purple-400 rounded animate-pulse delay-300"></div>
+                        <div className="w-0.5 sm:w-1 h-4 sm:h-5 bg-purple-400 rounded animate-pulse delay-400"></div>
+                        <div className="w-0.5 sm:w-1 h-2 sm:h-3 bg-purple-400 rounded animate-pulse delay-500"></div>
                       </div>
                     </div>
                   </div>
@@ -222,11 +222,11 @@ export default function Podcasts() {
           ))}
         </div>
       ) : (
-        <div className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 rounded-xl p-8 text-center border border-slate-700 shadow-xl">
-          <div className="flex flex-col items-center space-y-4">
-            <div className="w-16 h-16 bg-gradient-to-r from-slate-600 to-slate-700 rounded-full flex items-center justify-center">
+        <div className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 rounded-xl p-6 sm:p-8 text-center border border-slate-700 shadow-xl mx-2 sm:mx-0">
+          <div className="flex flex-col items-center space-y-3 sm:space-y-4">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-slate-600 to-slate-700 rounded-full flex items-center justify-center">
               <svg
-                className="w-8 h-8 text-slate-400"
+                className="w-6 h-6 sm:w-8 sm:h-8 text-slate-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -239,13 +239,13 @@ export default function Podcasts() {
                 />
               </svg>
             </div>
-            <p className="text-slate-400 text-lg">
+            <p className="text-slate-400 text-base sm:text-lg">
               No episodes available yet. Stay tuned!
             </p>
             <div className="flex space-x-2">
-              <div className="w-2 h-2 bg-slate-600 rounded-full animate-bounce"></div>
-              <div className="w-2 h-2 bg-slate-600 rounded-full animate-bounce delay-100"></div>
-              <div className="w-2 h-2 bg-slate-600 rounded-full animate-bounce delay-200"></div>
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-slate-600 rounded-full animate-bounce"></div>
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-slate-600 rounded-full animate-bounce delay-100"></div>
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-slate-600 rounded-full animate-bounce delay-200"></div>
             </div>
           </div>
         </div>
@@ -264,9 +264,8 @@ export default function Podcasts() {
         />
 
         {/* Main Podcast Content */}
-        <div className="flex-1 p-6 ml-64">
-          {" "}
-          {/* Adjust ml-64 based on your sidebar width */}
+        <div className="flex-1 p-3 sm:p-6 lg:ml-64">
+          {/* Responsive margin: no margin on mobile, ml-64 on large screens */}
           <div className="max-w-4xl mx-auto">
             <PodcastSection podcast={basiPodcasts} />
             <PodcastSection podcast={pasiPodcasts} />
