@@ -15,7 +15,7 @@ export default function AdminEmailLogin() {
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      router.push("/courses");
+      router.push("/admin-panel");
     }
   }, [isAuthenticated, router]);
 

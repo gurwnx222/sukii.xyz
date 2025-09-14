@@ -4,10 +4,11 @@ export const useAuth = () => {
   const {
     user,
     loading,
+    isAdmin,
+    checkIsAdmin,
     loginWithGoogle,
     logout,
     isAuthenticated,
-    // Add new methods
     signupWithEmail,
     loginWithEmail,
     resetPassword,
@@ -17,6 +18,8 @@ export const useAuth = () => {
   return {
     user,
     loading,
+    isAdmin,
+    checkIsAdmin,
     // Existing
     loginWithGoogle,
     logout,

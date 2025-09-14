@@ -60,7 +60,7 @@ const EmailLogin = ({ onSuccess, className = "" }) => {
         if (onSuccess) {
           onSuccess();
         } else {
-          router.push("/courses");
+          router.push("/admin-panel");
         }
       } catch (error) {
         setErrors({ submit: getErrorMessage(error.code) });

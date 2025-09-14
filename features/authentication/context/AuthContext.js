@@ -17,20 +17,31 @@ import { auth } from "@/lib/firebase";
 
 const AuthContext = createContext({});
 
+const adminEmails = ["johnsonivsamuel@gmail.com", "gurwinx766@gmail.com"];
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [isAdmin, setIsAdmin] = useState(false);
   // Listen to auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      if (user && user.email) {
+        const adminStatus = adminEmails.includes(user.email.toLowerCase());
+        setIsAdmin(adminStatus);
+      } else {
+        setIsAdmin(false);
+      }
       setLoading(false);
     });
 
     return unsubscribe; // Cleanup on unmount
   }, []);
-
+  // Helper function to check admin email
+  const checkIsAdmin = (email) => {
+    return adminEmails.includes(email.toLowerCase());
+  };
   // Email verification configuration
   const actionCodeSettings = {
     url: "https://www.sukii.xyz/email-verified", // Change this to a verification page
@@ -127,7 +138,21 @@ export const AuthProvider = ({ children }) => {
   // Sign in with email and password
   const loginWithEmail = async (email, password) => {
     try {
+      // Check if email is admin BEFORE authentication
+      const isAdminEmail = checkIsAdmin(email);
+
+      if (!isAdminEmail) {
+        throw new Error("Access denied: Admin privileges required");
+      }
+
       const result = await signInWithEmailAndPassword(auth, email, password);
+
+      // Double check after successful authentication
+      if (!checkIsAdmin(result.user.email)) {
+        await signOut(auth); // Sign out if somehow not admin
+        throw new Error("Access denied: Admin privileges required");
+      }
+
       return result;
     } catch (error) {
       console.error("Email login error:", error);
@@ -188,6 +213,8 @@ export const AuthProvider = ({ children }) => {
   const value = {
     user,
     loading,
+    checkIsAdmin,
+    isAdmin,
     signupWithEmail,
     loginWithEmail,
     resetPassword,
